@@ -12,6 +12,11 @@ const routes: Routes = [
     pathMatch: 'full',
     loadChildren: () => import('./feature/scss/scss.module').then(m => m.ScssModule),
   },
+  {
+    path: 'create-todo',
+    pathMatch: 'full',
+    loadChildren: () => import('./feature/create-todo/create-todo.module').then(m => m.CreateTodoModule),
+  },
 ];
 
 @NgModule({
