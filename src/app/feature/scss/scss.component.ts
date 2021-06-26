@@ -1,3 +1,4 @@
+import { mixin } from './constants/mixin.constant';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./scss.component.scss']
 })
 export class ScssComponent implements OnInit {
-
+  myMixin = mixin;
   constructor() { }
 
   ngOnInit(): void {
