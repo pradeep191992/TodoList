@@ -33,7 +33,7 @@
 <div class="container">
   <div class="row">
     <div class="col m-auto">
-      <table class="table">
+      <table class="table" *ngIf="arrayItem.length else creatingToDoList">
         <thead class="bg-light">
           <tr>
             <th scope="col">S.No</th>
@@ -70,3 +70,11 @@
     </div>
   </div>
 </div>
+
+<ng-template #creatingToDoList>
+  <div class="dotted-box">
+    <div class="alert alert-info" role="alert">
+      There is no TODO list generated yet please got to this link => <a [routerLink]="['create-todo']" class="alert-link">Create Your List</a>. to create your list.
+    </div>
+  </div>
+</ng-template>

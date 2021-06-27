@@ -30,10 +30,10 @@
     </form>
   </div>
 </div>
-<div class="container">
+<div class="container" >
   <div class="row">
     <div class="col m-auto">
-      <table class="table">
+      <table class="table" *ngIf="arrayItem.length else ToDoList">
         <thead class="bg-light">
           <tr>
             <th scope="col">S.No</th>
@@ -70,3 +70,11 @@
     </div>
   </div>
 </div>
+
+<ng-template #ToDoList>
+  <div class="dotted-box">
+    <div class="alert alert-info" role="alert">
+      Your list will be shown here....
+    </div>
+  </div>
+</ng-template>
