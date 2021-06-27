@@ -11,7 +11,9 @@ export class CreateTodoComponent implements OnInit {
   formData = new formModal();
   arrayItem = [];
   public myObj = {};
-  constructor() { }
+  constructor() { };
+
+  ticketLink = 'https://builderhomesite.atlassian.net/browse/';
 
   ngOnInit(): void {
     this.getData();

@@ -12,6 +12,8 @@ export class HomeComponent implements OnInit {
   formData = new formModal();
   arrayItem = [];
 
+  ticketLink = 'https://builderhomesite.atlassian.net/browse/';
+
   ngOnInit(): void {
     this.getData();
   }
