@@ -30,7 +30,7 @@ export class CreateTodoComponent implements OnInit {
     const item2 = this.formData.secondField;
     const item3 = this.formData.thirdField;
     const item4 = this.formData.date;
-    this.myObj = {name: "HL-"+item1, desc: item2, other: item3, dueDate: item4};
+    this.myObj = {name: "HL-"+item1, desc: item2, other: item3, dueDate: item4, className: ''};
 
     if(localStorage.getItem('itemJson') == null){
       this.arrayItem.push(this.myObj);
@@ -58,10 +58,14 @@ export class CreateTodoComponent implements OnInit {
 
   taskComplete(i){
     this.arrayItem = JSON.parse(localStorage.getItem('itemJson'));
-    this.myObj = 'class';
-    this.arrayItem.push(i, this.myObj);
+    if (this.arrayItem[i].className == 'task-complete') {
+      this.arrayItem[i].className = 'task-pending';
+      this.arrayItem[i].desc = 'Pending';
+    } else {
+      this.arrayItem[i].className = 'task-complete';
+      this.arrayItem[i].desc = 'Done';
+    }
     localStorage.setItem('itemJson', JSON.stringify(this.arrayItem));
-    console.log(localStorage.getItem('itemJson'))
     this.getData();
   }
 
