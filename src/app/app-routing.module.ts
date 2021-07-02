@@ -8,7 +8,7 @@ const routes: Routes = [
     loadChildren: () => import('./feature/home/home.module').then(m => m.HomeModule),
   },
   {
-    path: 'scss-var',
+    path: 'scss-mixin',
     pathMatch: 'full',
     loadChildren: () => import('./feature/scss/scss.module').then(m => m.ScssModule),
   },
@@ -16,6 +16,16 @@ const routes: Routes = [
     path: 'create-todo',
     pathMatch: 'full',
     loadChildren: () => import('./feature/create-todo/create-todo.module').then(m => m.CreateTodoModule),
+  },
+  {
+    path: 'awasome-page',
+    pathMatch: 'full',
+    loadChildren: () => import('./feature/creative-page/creative-page.module').then(m => m.CreativePageModule),
+  },
+  {
+    path: 'contact',
+    pathMatch: 'full',
+    loadChildren: () => import('./feature/contact/contact.module').then(m => m.ContactModule),
   },
 ];
 

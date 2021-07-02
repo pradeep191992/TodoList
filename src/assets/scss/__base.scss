@@ -1,0 +1,13 @@
+@import './_mixin';
+
+body{
+  padding-left: 100px;
+  transition: padding .5s ease;
+  &.nav-open{
+    padding-left: 320px;
+  }
+}
+.task-complete{
+  text-decoration: line-through;
+  opacity: .6;
+}

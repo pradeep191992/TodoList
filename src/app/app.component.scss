@@ -1,6 +1,18 @@
+@import './../assets/scss/_mixin';
 ::ng-deep{
-  .task-complete{
-    text-decoration: line-through;
-    opacity: .6;
+  .btn-primary {
+    color: $white;
+    background-color: $primary;
+    border-color: $primary;
+  }
+  .btn-secondary {
+    color: $primary;
+    background-color: $white;
+    border-color: $primary;
+  }
+  .btn{
+    border-radius: 40px;
+    padding: 0 16px;
+    line-height: 36px;
   }
 }

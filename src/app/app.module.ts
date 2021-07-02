@@ -16,7 +16,7 @@ import { AppComponent } from './app.component';
     AppRoutingModule,
     HomeModule,
     HeaderModule,
-    FooterModule
+    FooterModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
