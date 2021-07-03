@@ -15,11 +15,11 @@ export const headerConst = {
       link: '/create-todo',
       icon: '#mail_icon',
     },
-    {
-      linkTitle: 'User',
-      link: '/user',
-      icon: '#user_icon',
-    },
+    // {
+    //   linkTitle: 'User',
+    //   link: '/user',
+    //   icon: '#user_icon',
+    // },
     {
       linkTitle: 'Creative Page',
       link: '/awasome-page',

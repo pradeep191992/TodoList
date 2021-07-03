@@ -1,3 +1,4 @@
+import { TeaCupModule } from './../../modules/tea-cup/tea-cup.module';
 import { HomeComponent } from './home.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -11,7 +12,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     HomeRoutingModule,
-    FormsModule
+    FormsModule,
+    TeaCupModule
   ],
   exports: [
     HomeComponent,

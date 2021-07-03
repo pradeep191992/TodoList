@@ -1,3 +1,4 @@
+import { TeaCupModule } from './../../modules/tea-cup/tea-cup.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -9,7 +10,8 @@ import { CreativePageComponent } from './creative-page.component';
   declarations: [CreativePageComponent],
   imports: [
     CommonModule,
-    CreativePageRoutingModule
+    CreativePageRoutingModule,
+    TeaCupModule
   ]
 })
 export class CreativePageModule { }

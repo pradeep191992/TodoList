@@ -1,35 +1,35 @@
-<div class="jumbotron bg-light">
+<div class="container-fluid mb-4 bg-color">
+  <div class="row">
+    <div class="col">
+      <div class="d-flex justify-content-center align-items-start flex-md-column h-100 text-white">
+        <h2 class="display-4 my-4">Take a break for love its <br/>Tea Love</h2>
+        <p>Teas, especially green and black varieties, contain antioxidant compounds that may boost heart health and exert anticancer effects. Meanwhile, milk is rich in beneficial nutrients that contribute to growth and bone health.</p>
+        <div class="text-left">
+          <a [routerLink]="['/create-todo']" class="alert-link btn btn-primary ">Create Your Task List</a>
+        </div>
+      </div>
+    </div>
+    <app-tea-cup class="col my-4"></app-tea-cup>
+  </div>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+
+<div class="jumbotron bg-light" *ngIf="arrayItem.length">
   <div class="container">
     <h1 class="display-4">Todo List</h1>
     <p class="lead pb-4">Showing all task of my ToDo List</p>
   </div>
 </div>
-<!-- <div class="container">
-  <div class="row p-y-5">
-    <form class="col-10 m-auto my-4" #myToDos="ngForm" (ngSubmit)="checkAndSaveData()">
-      <div class="form-group my-3">
-        <label class="form-label small" for="text1">Ticket Id</label>
-        <input type="text" class="form-control" name="text1" [(ngModel)]="formData.firstField" id="text1" placeholder="Enter Ticket Id">
-      </div>
-      <div class="form-group mb-3">
-        <label class="form-label small" for="text2">Ticket Status</label>
-        <input type="text" class="form-control" name="text2" [(ngModel)]="formData.secondField" id="text2" placeholder="Enter Status">
-      </div>
-      <div class="form-group mb-3">
-        <label class="form-label small" for="text3">Remaining Hours</label>
-        <input type="text" class="form-control" name="text3" [(ngModel)]="formData.thirdField" id="text3" placeholder="Enter Remaining Hours">
-      </div>
-      <div class="form-group mb-3">
-        <label class="form-label small" for="date">Date to Finish</label>
-        <input type="date" class="form-control" name="date" [(ngModel)]="formData.date" id="date" placeholder="Enter Remaining Hours">
-      </div>
-      <div class="form-group">
-        <button type="submit" class="btn btn-primary">Save Data</button>
-        <p (click)="clearStorage()" class="btn btn-secondary m-3">Clear All Data</p>
-      </div>
-    </form>
-  </div>
-</div> -->
+
 <div class="container">
   <div class="row">
     <div class="col m-auto">
@@ -74,7 +74,7 @@
 <ng-template #creatingToDoList>
   <div class="dotted-box">
     <div class="alert alert-info" role="alert">
-      There is no TODO list generated yet please got to this link => <a [routerLink]="['create-todo']" class="alert-link">Create Your List</a>. to create your list.
+      There is no TODO list generated yet please got to this link => <a [routerLink]="['/create-todo']" class="alert-link">Create Your List</a>. to create your list.
     </div>
   </div>
 </ng-template>
