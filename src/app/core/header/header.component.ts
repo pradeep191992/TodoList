@@ -1,5 +1,6 @@
 import { headerConst } from './constants/header.constant';
 import { Component, OnInit, Renderer2 } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -11,14 +12,15 @@ export class HeaderComponent implements OnInit {
   mainIndex = 0;
   toggle = false;
   menuIcon = '#menu_icon';
-  constructor(public render: Renderer2) { }
+  activeRoute = '/';
+  constructor(public render: Renderer2, public router: Router) { }
 
   ngOnInit(): void {
-  }
-
-  // tslint:disable-next-line:typedef
-  onButtonGroupClick(i){
-    this.mainIndex = i;
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.activeRoute = event.url;
+      }
+    });
   }
 
   // tslint:disable-next-line:typedef

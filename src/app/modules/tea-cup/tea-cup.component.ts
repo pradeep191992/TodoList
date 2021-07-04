@@ -18,11 +18,12 @@ export class TeaCupComponent implements OnInit {
   arraymove() {
     if (this.constant.length) {
       this.constant.forEach(element => {
-        const myArr = Math.floor(Math.random() * this.constant.length);
-        this.newArr.push(myArr);
+        const myArr = Math.floor(Math.random() * this.constant.length - 0.5);
+        this.newArr.unshift(myArr);
       });
+      // this.newArr =  this.constant.sort( () => Math.random() - 0.5 );
+      console.log(this.newArr);
     }
-    console.log(this.newArr);
   }
 
 }

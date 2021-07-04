@@ -2,7 +2,7 @@ export const headerConst = {
   menuItem: [
     {
       linkTitle: 'Home',
-      link: '',
+      link: '/',
       icon: '#home_details',
     },
     {

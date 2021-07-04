@@ -2,7 +2,7 @@
 <nav class="nv" [ngClass]="{'nav-open' : toggle}">
   <app-svg-icon class="nv_toggle" [iconHashTag]="menuIcon" (click)="toggleNav()"></app-svg-icon>
   <ul class="nv_list">
-    <li class="nv_list_item" *ngFor="let item of headerConst; let i = index;" (click)="onButtonGroupClick(i)" [ngClass]="{'active' : i == mainIndex}">
+    <li class="nv_list_item" *ngFor="let item of headerConst;" [ngClass]="{'active' : item.link == activeRoute}">
       <span class="a"></span>
       <span class="b"></span>
       <a class="nv_list_item-link" [routerLink]="[item.link]">

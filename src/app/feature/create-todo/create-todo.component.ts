@@ -41,7 +41,7 @@ export class CreateTodoComponent implements OnInit {
     else{
       this.arrayItem = JSON.parse(localStorage.getItem('itemJson'));
       if (item1 !== '' && item2 !== '' && item3 !== '') {
-        this.arrayItem.push(this.myObj);
+        this.arrayItem.unshift(this.myObj);
       }
       else{
         console.log('please enter values')
