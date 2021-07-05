@@ -6,6 +6,7 @@ export class formModal {
     public thirdField?: string,
     public date?: number,
     public className?: string,
+    public remark?: string,
   ){
 
   }

@@ -18,7 +18,7 @@
     }
     &:nth-child(11){
       top: 38%;
-      left: 10%;
+      left: 4%;
       animation: animation 10s linear infinite;
     }
     &:nth-child(2){
@@ -48,12 +48,12 @@
     }
     &:nth-child(7){
       top: 85%;
-      left: 20%;
+      left: 3%;
       animation: animation 15s linear infinite;
     }
     &:nth-child(8){
-      top: 50%;
-      left: 30%;
+      top: 33%;
+      left: 32%;
       animation: animation 12s linear infinite;
     }
     &:nth-child(9){
@@ -94,5 +94,73 @@
   100%{
     transform: translateY(-100px) scale(1.2) rotate(360deg);
     opacity: 0;
+  }
+}
+
+.form{    
+  position: relative;
+  width: 300px;
+  height: 400px;
+  margin: auto;
+  background: rgb(255 255 255 / 10%);
+  border-radius: 16px;
+  box-shadow: 2px 2px 50px rgb(255 255 255 / 50%);
+  padding: 24px 16px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  border-top: 2px solid rgb(255 255 255 / 50%);
+  border-left: 2px solid rgb(255 255 255 / 50%);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  overflow: hidden;
+  z-index: 9;
+  &-data{
+    width: 100%;
+  }
+  &-group{
+    position: relative;
+    margin-bottom: 24px;
+    .select{
+      display: block;
+      width: 100%;
+      background-color: transparent;
+      border: 1px solid #fff;
+      line-height: 40px;
+      text-transform: uppercase;
+      outline: none;
+      background: rgba(0,0,0,0.3);
+      color:#fff;
+      text-shadow:0 1px 0 rgba(0,0,0,0.4);
+    }
+    label{
+      position: absolute;
+      top: 11px;
+      left: 13px;
+      font-size: 14px;
+      transition: .5s ease;
+      cursor: text;
+    }
+    input{
+      display: block;
+      width: 100%;
+      line-height: 40px;
+      color: #fff;
+      border: 1px solid transparent;
+      border-bottom-color: rgb(255 255 255 / 50%);
+      background-color: transparent;
+      outline: none;
+      padding: 0 12px;
+      font-size: 14px;
+      &:focus ~ label,
+      &:valid ~ label{
+        top: -15px;
+        font-size: 12px;
+      }
+    }
+    .btn-primary{
+      line-height: 40px;
+      padding: 0 32px;
+    }
   }
 }

@@ -1,27 +1,38 @@
 <div class="container-fluid mb-4 bg-color">
-  <div class="row">
-    <div class="col">
+  <div class="row w-100">
+    <div class="col-md-6">
       <div class="d-flex justify-content-center align-items-start flex-md-column h-100 text-white">
-        <h2 class="display-4 my-4">Take a break for love its <br/>Tea Love</h2>
+        <h2 class="display-4 my-4 p-lg-4">Take a break for love its Tea Love</h2>
         <!-- <p>Teas, especially green and black varieties, contain antioxidant compounds that may boost heart health and exert anticancer effects. Meanwhile, milk is rich in beneficial nutrients that contribute to growth and bone health.</p> -->
         
         <div class="form">
-          <div class="form-group">
-            <label for="t_id">Enter Ticket Id</label>
-            <input type="text" name="t_id" id="t_id" autocomplete="none">
-          </div>
-          <div class="form-group">
-            <label for="t_id">Enter Ticket Id</label>
-            <input type="text" name="t_id" id="t_id" >
-          </div>
+          <h2 class="w-100">Create a Task</h2>
+          <form class="form-data" #myToDos="ngForm" (ngSubmit)="appService.checkAndSaveData()">
+            <div class="form-group">
+              <select class="select" name="select" id="select" (click)="appService.checkProject($event)">
+                <option  *ngFor="let item of appService.projects" [value]="item" (click)="appService.checkProject($event)">{{item}}</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <input type="text" name="t_id" id="t_id" [(ngModel)]="appService.formData.firstField" autocomplete="off" required>
+              <label for="t_id">Enter Ticket Id</label>
+            </div>
+            <div class="form-group">
+              <input type="text" name="hours" id="hours" [(ngModel)]="appService.formData.thirdField" autocomplete="off" required>
+              <label for="hours">Enter time in hours</label>
+            </div>
+            <div class="form-group text-center my-5">
+              <button class="btn btn-primary">Add to list</button>
+            </div>
+          </form>
         </div>
 
-        <div class="text-left">
+        <!-- <div class="text-left">
           <a [routerLink]="['/create-todo']" class="alert-link btn btn-primary ">Create Your Task List</a>
-        </div>
+        </div> -->
       </div>
     </div>
-    <app-tea-cup class="col my-4"></app-tea-cup>
+    <app-tea-cup class="d-block col-md-6 my-4"></app-tea-cup>
   </div>
   <span></span>
   <span></span>
@@ -37,12 +48,12 @@
 
 <div class="jumbotron bg-light" *ngIf="appService.arrayItem.length">
   <div class="container">
-    <h1 class="display-4">Todo List</h1>
-    <p class="lead pb-4">Showing all task of my ToDo List</p>
+    <h1 class="display-4">My Task List</h1>
+    <p class="lead pb-4">All task which is in my list</p>
   </div>
 </div>
 
-<div class="container">
+<div class="container" >
   <div class="row">
     <div class="col m-auto">
       <table class="table" *ngIf="appService.arrayItem.length else creatingToDoList">
@@ -52,8 +63,9 @@
             <th scope="col">Ticket Id</th>
             <th scope="col">Status</th>
             <th scope="col">Remaining Hours</th>
+            <th scope="col">Remarks</th>
             <th scope="col">Date</th>
-            <th scope="col">Mark Complete</th>
+            <th scope="col">Mark Done</th>
             <th scope="col">Remove</th>
           </tr>
         </thead>
@@ -63,13 +75,14 @@
             <td><a href="{{appService.ticketLink+item.name}}" target="_blank">{{item.name}}</a></td>
             <td>{{item.desc}}</td>
             <td class="text-center">{{item.other}}</td>
-            <td>{{item.dueDate}}</td>
-            <td (click)="appService.taskComplete(i)" class="text-success text-center">
-              <!-- <div class="input-group-prepend">
-                <div class="input-group-text"> -->
-                  <input type="checkbox" aria-label="Checkbox for following text input">
-                <!-- </div>
-              </div> -->
+            <td class="text-center" contenteditable="true" (mouseout)="appService.remarkUpdate(i, $event)">{{item.remark}}</td>
+            <td>
+              <span class="d-block" *ngIf="item.dueDate">Target {{item.dueDate}}</span> 
+              <span class="d-block" *ngIf="item.addDate">Start {{item.addDate}}</span> 
+              <span class="d-block" *ngIf="item.completeDate">End {{item.completeDate}}</span>
+            </td>
+            <td (click)="appService.taskComplete(i)" class="text-success text-center btn">
+              <span>Done</span>
             </td>
             <td>
               <button type="submit" class="btn btn-danger" (click)="appService.removeTask(i)">

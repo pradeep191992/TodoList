@@ -40,8 +40,9 @@
             <th scope="col">Ticket Id</th>
             <th scope="col">Status</th>
             <th scope="col">Remaining Hours</th>
+            <th scope="col">Remarks</th>
             <th scope="col">Date</th>
-            <th scope="col">Mark Complete</th>
+            <th scope="col">Mark Done</th>
             <th scope="col">Remove</th>
           </tr>
         </thead>
@@ -51,13 +52,14 @@
             <td><a href="{{appService.ticketLink+item.name}}" target="_blank">{{item.name}}</a></td>
             <td>{{item.desc}}</td>
             <td class="text-center">{{item.other}}</td>
-            <td>{{item.dueDate}}</td>
-            <td (click)="appService.taskComplete(i)" class="text-success text-center">
-              <!-- <div class="input-group-prepend">
-                <div class="input-group-text"> -->
-                  <input type="checkbox" aria-label="Checkbox for following text input">
-                <!-- </div>
-              </div> -->
+            <td class="text-center" contenteditable="true" (mouseout)="appService.remarkUpdate(i, $event)">{{item.remark}}</td>
+            <td>
+              <span class="d-block" *ngIf="item.dueDate">Target to finish {{item.dueDate}}</span> 
+              <span class="d-block" *ngIf="item.addDate">Added by {{item.addDate}}</span> 
+              <span class="d-block" *ngIf="item.completeDate">Done by {{item.completeDate}}</span>
+            </td>
+            <td (click)="appService.taskComplete(i)" class="text-success text-center btn">
+              <span>Done</span>
             </td>
             <td>
               <button type="submit" class="btn btn-danger" (click)="appService.removeTask(i)">
