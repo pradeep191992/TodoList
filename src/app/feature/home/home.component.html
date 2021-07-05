@@ -3,7 +3,19 @@
     <div class="col">
       <div class="d-flex justify-content-center align-items-start flex-md-column h-100 text-white">
         <h2 class="display-4 my-4">Take a break for love its <br/>Tea Love</h2>
-        <p>Teas, especially green and black varieties, contain antioxidant compounds that may boost heart health and exert anticancer effects. Meanwhile, milk is rich in beneficial nutrients that contribute to growth and bone health.</p>
+        <!-- <p>Teas, especially green and black varieties, contain antioxidant compounds that may boost heart health and exert anticancer effects. Meanwhile, milk is rich in beneficial nutrients that contribute to growth and bone health.</p> -->
+        
+        <div class="form">
+          <div class="form-group">
+            <label for="t_id">Enter Ticket Id</label>
+            <input type="text" name="t_id" id="t_id" autocomplete="none">
+          </div>
+          <div class="form-group">
+            <label for="t_id">Enter Ticket Id</label>
+            <input type="text" name="t_id" id="t_id" >
+          </div>
+        </div>
+
         <div class="text-left">
           <a [routerLink]="['/create-todo']" class="alert-link btn btn-primary ">Create Your Task List</a>
         </div>
@@ -23,7 +35,7 @@
   <span></span>
 </div>
 
-<div class="jumbotron bg-light" *ngIf="arrayItem.length">
+<div class="jumbotron bg-light" *ngIf="appService.arrayItem.length">
   <div class="container">
     <h1 class="display-4">Todo List</h1>
     <p class="lead pb-4">Showing all task of my ToDo List</p>
@@ -33,7 +45,7 @@
 <div class="container">
   <div class="row">
     <div class="col m-auto">
-      <table class="table" *ngIf="arrayItem.length else creatingToDoList">
+      <table class="table" *ngIf="appService.arrayItem.length else creatingToDoList">
         <thead class="bg-light">
           <tr>
             <th scope="col">S.No</th>
@@ -46,13 +58,13 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let item of arrayItem; let i = index" class="{{item.className}}">
+          <tr *ngFor="let item of appService.arrayItem; let i = index" class="{{item.className}}">
             <th scope="row">{{1+i}}</th>
-            <td><a href="{{ticketLink+item.name}}" target="_blank">{{item.name}}</a></td>
+            <td><a href="{{appService.ticketLink+item.name}}" target="_blank">{{item.name}}</a></td>
             <td>{{item.desc}}</td>
             <td class="text-center">{{item.other}}</td>
             <td>{{item.dueDate}}</td>
-            <td (click)="taskComplete(i)" class="text-success text-center">
+            <td (click)="appService.taskComplete(i)" class="text-success text-center">
               <!-- <div class="input-group-prepend">
                 <div class="input-group-text"> -->
                   <input type="checkbox" aria-label="Checkbox for following text input">
@@ -60,7 +72,7 @@
               </div> -->
             </td>
             <td>
-              <button type="submit" class="btn btn-danger" (click)="removeTask(i)">
+              <button type="submit" class="btn btn-danger" (click)="appService.removeTask(i)">
                 <i class="far fa-trash-alt"></i>
               </button>
             </td>

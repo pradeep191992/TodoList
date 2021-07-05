@@ -1,4 +1,4 @@
-import { formModal } from './modal/form-modal';
+import { AppService } from './../../services/app.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,74 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  constructor() { }
 
-  formData = new formModal();
-  arrayItem = [];
-
-  ticketLink = 'https://builderhomesite.atlassian.net/browse/';
+  constructor( public appService: AppService) { }
 
   ngOnInit(): void {
-    this.getData();
-  }
-
-  getData(){
-    if (localStorage.getItem('itemJson') !== null) {
-      this.arrayItem = JSON.parse(localStorage.getItem('itemJson'));
-    }else{
-      this.arrayItem = []
-    }
-  }
-
-  // checkAndSaveData(){
-  //   const item1 = this.formData.firstField;
-  //   const item2 = this.formData.secondField;
-  //   const item3 = this.formData.thirdField;
-  //   const item4 = this.formData.date;
-  //   const myObj = {name: "HL-"+item1, desc: item2, other: item3, dueDate: item4};
-
-  //   if(localStorage.getItem('itemJson') == null){
-  //     this.arrayItem.push(myObj);
-  //     localStorage.setItem('itemJson', JSON.stringify(this.arrayItem));
-  //   }
-  //   else{
-  //     this.arrayItem = JSON.parse(localStorage.getItem('itemJson'));
-  //     if (item1 !== '' && item2 !== '' && item3 !== '') {
-  //       this.arrayItem.push(myObj);
-  //     }
-  //     else{
-  //       console.log('please enter values')
-  //     }
-  //     localStorage.setItem('itemJson', JSON.stringify(this.arrayItem));
-  //   }
-  //   this.getData();
-  // }
-
-  removeTask(i){
-    this.arrayItem = JSON.parse(localStorage.getItem('itemJson'));
-    this.arrayItem.splice(i, 1);
-    localStorage.setItem('itemJson', JSON.stringify(this.arrayItem));
-    this.getData();
-  }
-
-  taskComplete(i){
-    this.arrayItem = JSON.parse(localStorage.getItem('itemJson'));
-    if (this.arrayItem[i].className == 'task-complete') {
-      this.arrayItem[i].className = 'task-pending';
-      this.arrayItem[i].desc = 'Pending';
-    } else {
-      this.arrayItem[i].className = 'task-complete';
-      this.arrayItem[i].desc = 'Done';
-    }
-    localStorage.setItem('itemJson', JSON.stringify(this.arrayItem));
-    this.getData();
-  }
-
-  clearStorage(){
-    if (confirm('Do You Want To clear All data?')) {
-      localStorage.clear();
-      this.getData();
-    }
+    this.appService.getData();
   }
 
 }

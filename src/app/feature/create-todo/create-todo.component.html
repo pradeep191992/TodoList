@@ -6,26 +6,26 @@
 </div>
 <div class="container">
   <div class="row p-y-5">
-    <form class="col-10 m-auto my-4" #myToDos="ngForm" (ngSubmit)="checkAndSaveData()">
+    <form class="col-10 m-auto my-4" #myToDos="ngForm" (ngSubmit)="appService.checkAndSaveData()">
       <div class="form-group my-3">
         <label class="form-label small" for="text1">Ticket Id</label>
-        <input type="text" class="form-control" name="text1" [(ngModel)]="formData.firstField" id="text1" placeholder="Enter Ticket Id">
+        <input type="text" class="form-control" name="text1" [(ngModel)]="appService.formData.firstField" id="text1" placeholder="Enter Ticket Id">
       </div>
       <div class="form-group mb-3">
         <label class="form-label small" for="text2">Ticket Status</label>
-        <input type="text" class="form-control" name="text2" [(ngModel)]="formData.secondField" id="text2" placeholder="Enter Status">
+        <input type="text" class="form-control" name="text2" [(ngModel)]="appService.formData.secondField" id="text2" placeholder="Enter Status">
       </div>
       <div class="form-group mb-3">
         <label class="form-label small" for="text3">Remaining Hours</label>
-        <input type="text" class="form-control" name="text3" [(ngModel)]="formData.thirdField" id="text3" placeholder="Enter Remaining Hours">
+        <input type="text" class="form-control" name="text3" [(ngModel)]="appService.formData.thirdField" id="text3" placeholder="Enter Remaining Hours">
       </div>
       <div class="form-group mb-3">
         <label class="form-label small" for="date">Date to Finish</label>
-        <input type="date" class="form-control" name="date" [(ngModel)]="formData.date" id="date" placeholder="Enter Remaining Hours">
+        <input type="date" class="form-control" name="date" [(ngModel)]="appService.formData.date" id="date" placeholder="Enter Remaining Hours">
       </div>
       <div class="form-group">
         <button type="submit" class="btn btn-primary">Save Data</button>
-        <p (click)="clearStorage()" class="btn btn-secondary m-3">Clear All Data</p>
+        <p (click)="appService.clearStorage()" class="btn btn-secondary m-3">Clear All Data</p>
       </div>
     </form>
   </div>
@@ -33,7 +33,7 @@
 <div class="container" >
   <div class="row">
     <div class="col m-auto">
-      <table class="table" *ngIf="arrayItem.length else ToDoList">
+      <table class="table" *ngIf="appService.arrayItem.length else ToDoList">
         <thead class="bg-light">
           <tr>
             <th scope="col">S.No</th>
@@ -46,13 +46,13 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let item of arrayItem; let i = index" class="{{item.className}}">
+          <tr *ngFor="let item of appService.arrayItem; let i = index" class="{{item.className}}">
             <th scope="row">{{1+i}}</th>
-            <td><a href="{{ticketLink+item.name}}" target="_blank">{{item.name}}</a></td>
+            <td><a href="{{appService.ticketLink+item.name}}" target="_blank">{{item.name}}</a></td>
             <td>{{item.desc}}</td>
             <td class="text-center">{{item.other}}</td>
             <td>{{item.dueDate}}</td>
-            <td (click)="taskComplete(i)" class="text-success text-center">
+            <td (click)="appService.taskComplete(i)" class="text-success text-center">
               <!-- <div class="input-group-prepend">
                 <div class="input-group-text"> -->
                   <input type="checkbox" aria-label="Checkbox for following text input">
@@ -60,7 +60,7 @@
               </div> -->
             </td>
             <td>
-              <button type="submit" class="btn btn-danger" (click)="removeTask(i)">
+              <button type="submit" class="btn btn-danger" (click)="appService.removeTask(i)">
                 <i class="far fa-trash-alt"></i>
               </button>
             </td>
