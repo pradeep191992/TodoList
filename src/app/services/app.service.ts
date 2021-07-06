@@ -9,7 +9,8 @@ export class AppService {
   arrayItem = [];
   public myObj = {};
   ticketLink = 'https://builderhomesite.atlassian.net/browse/';
-  projects = ['HomLuv', 'dress', 'ifp', 'pro', 'duda'];
+  ticketSlowgun = 'HL-';
+  projects = ['HomLuv', 'dress', 'BROOKFIELD', 'pro', 'Kiosk', 'duda', 'WebArch'];
 
   currentData = new Date();
 
@@ -28,22 +29,37 @@ export class AppService {
     if (event.target.value === 'HomLuv') {
       console.log('Project hl', event.target.value);
       this.ticketLink = 'https://builderhomesite.atlassian.net/browse/';
+      this.ticketSlowgun = 'HL-';
     }
-    else if (event.target.value === 'dress') {
+    else if (event.target.value === 'DREES') {
       console.log('Project dress', event.target.value);
-      this.ticketLink = 'dress/';
+      this.ticketLink = 'https://builderhomesite.atlassian.net/browse/';
+      this.ticketSlowgun = 'DREES-';
     }
-    else if (event.target.value === 'ifp') {
-      console.log('Project ifp', event.target.value);
-      this.ticketLink = 'ifp/';
+    else if (event.target.value === 'BROOKFIELD') {
+      console.log('Project BROOKFIELD', event.target.value);
+      this.ticketLink = 'https://builderhomesite.atlassian.net/browse/';
+      this.ticketSlowgun = 'BROOKFIELD-';
     }
-    else if (event.target.value === 'pro') {
-      console.log('Project pro', event.target.value);
-      this.ticketLink = 'pro';
+    else if (event.target.value === 'PRO8') {
+      console.log('Project PRO8', event.target.value);
+      this.ticketLink = 'https://builderhomesite.atlassian.net/browse/';
+      this.ticketSlowgun = 'PRO8-';
+    }
+    else if (event.target.value === 'WebArch') {
+      console.log('Project WebArch', event.target.value);
+      this.ticketLink = 'https://builderhomesite.atlassian.net/browse/';
+      this.ticketSlowgun = 'EX2PWEBAP-';
+    }
+    else if (event.target.value === 'Kiosk') {
+      console.log('Project Kiosk', event.target.value);
+      this.ticketLink = 'https://builderhomesite.atlassian.net/browse/';
+      this.ticketSlowgun = 'EX2PWPK-';
     }
     else if (event.target.value === 'duda') {
       console.log('Project duda', event.target.value);
-      this.ticketLink = 'duda/';
+      this.ticketLink = 'https://builderhomesite.atlassian.net/browse/';
+      this.ticketSlowgun = 'BHIDUDA-';
     }
   }
 
@@ -62,9 +78,9 @@ export class AppService {
     const item2 = this.formData.secondField;
     const item3 = this.formData.thirdField;
     const item4 = this.formData.date;
-    this.myObj = {name: 'HL-' + item1, desc: item2, other: item3,
+    this.myObj = {name: this.ticketSlowgun + item1, desc: item2, other: item3,
      dueDate: item4, className: '', addDate: this.newDate,
-     completeDate: '', remark: 'Add Comment'};
+     completeDate: '', remark: 'Add Comment', baseUrl: this.ticketLink};
 
     if (localStorage.getItem('itemJson') == null){
       this.arrayItem.push(this.myObj);

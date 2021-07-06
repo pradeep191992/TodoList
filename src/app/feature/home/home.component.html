@@ -72,7 +72,7 @@
         <tbody>
           <tr *ngFor="let item of appService.arrayItem; let i = index" class="{{item.className}}">
             <th scope="row">{{1+i}}</th>
-            <td><a href="{{appService.ticketLink+item.name}}" target="_blank">{{item.name}}</a></td>
+            <td><a href="{{item.baseUrl+item.name}}" target="_blank">{{item.name}}</a></td>
             <td>{{item.desc}}</td>
             <td class="text-center">{{item.other}}</td>
             <td class="text-center" contenteditable="true" (mouseout)="appService.remarkUpdate(i, $event)">{{item.remark}}</td>
