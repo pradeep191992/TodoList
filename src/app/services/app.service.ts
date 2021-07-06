@@ -10,7 +10,7 @@ export class AppService {
   public myObj = {};
   ticketLink = 'https://builderhomesite.atlassian.net/browse/';
   ticketSlowgun = 'HL-';
-  projects = ['HomLuv', 'dress', 'BROOKFIELD', 'pro', 'Kiosk', 'duda', 'WebArch'];
+  projects = ['HomLuv', 'DREES', 'BROOKFIELD', 'PRO8', 'Kiosk', 'duda', 'WebArch'];
 
   currentData = new Date();
 
