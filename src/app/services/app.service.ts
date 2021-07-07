@@ -1,3 +1,4 @@
+import { element } from 'protractor';
 import { Injectable } from '@angular/core';
 import { formModal } from '../feature/create-todo/modal/form-modal';
 
@@ -8,59 +9,28 @@ export class AppService {
   formData = new formModal();
   arrayItem = [];
   public myObj = {};
+  formValid = false;
   ticketLink = 'https://builderhomesite.atlassian.net/browse/';
   ticketSlowgun = 'HL-';
-  projects = ['HomLuv', 'DREES', 'BROOKFIELD', 'PRO8', 'Kiosk', 'duda', 'WebArch'];
+  projects = ['HL', 'DREES', 'BROOKFIELD', 'PRO8', 'EX2PWPK', 'BHIDUDA', 'EX2PWEBAP', 'BDXDW'];
 
   currentData = new Date();
 
   newDate = this.currentData.getDate() + '-'
     + (this.currentData.getMonth() + 1)  + '-'
-    + this.currentData.getFullYear() + '  '
-    + this.currentData.getHours() + ':'
-    + this.currentData.getMinutes() + ':'
-    + this.currentData.getSeconds();
+    + this.currentData.getFullYear() ;
 
   constructor() { }
 
   // tslint:disable-next-line:typedef
   checkProject(event){
-    // console.log('Project', event.target.value);
-    if (event.target.value === 'HomLuv') {
-      console.log('Project hl', event.target.value);
-      this.ticketLink = 'https://builderhomesite.atlassian.net/browse/';
-      this.ticketSlowgun = 'HL-';
-    }
-    else if (event.target.value === 'DREES') {
-      console.log('Project dress', event.target.value);
-      this.ticketLink = 'https://builderhomesite.atlassian.net/browse/';
-      this.ticketSlowgun = 'DREES-';
-    }
-    else if (event.target.value === 'BROOKFIELD') {
-      console.log('Project BROOKFIELD', event.target.value);
-      this.ticketLink = 'https://builderhomesite.atlassian.net/browse/';
-      this.ticketSlowgun = 'BROOKFIELD-';
-    }
-    else if (event.target.value === 'PRO8') {
-      console.log('Project PRO8', event.target.value);
-      this.ticketLink = 'https://builderhomesite.atlassian.net/browse/';
-      this.ticketSlowgun = 'PRO8-';
-    }
-    else if (event.target.value === 'WebArch') {
-      console.log('Project WebArch', event.target.value);
-      this.ticketLink = 'https://builderhomesite.atlassian.net/browse/';
-      this.ticketSlowgun = 'EX2PWEBAP-';
-    }
-    else if (event.target.value === 'Kiosk') {
-      console.log('Project Kiosk', event.target.value);
-      this.ticketLink = 'https://builderhomesite.atlassian.net/browse/';
-      this.ticketSlowgun = 'EX2PWPK-';
-    }
-    else if (event.target.value === 'duda') {
-      console.log('Project duda', event.target.value);
-      this.ticketLink = 'https://builderhomesite.atlassian.net/browse/';
-      this.ticketSlowgun = 'BHIDUDA-';
-    }
+    const val = event.target.value;
+    this.projects.forEach(data => {
+      if (val === data) {
+        this.ticketSlowgun = val + '-';
+        console.log(this.ticketSlowgun);
+      }
+    });
   }
 
   // tslint:disable-next-line:typedef
@@ -74,10 +44,10 @@ export class AppService {
 
   // tslint:disable-next-line:typedef
   checkAndSaveData() {
-    const item1 = this.formData.firstField;
-    const item2 = this.formData.secondField;
-    const item3 = this.formData.thirdField;
-    const item4 = this.formData.date;
+    const item1 = this.formData?.firstField;
+    const item2 = this.formData?.secondField ? this.formData?.secondField : 'To Do';
+    const item3 = this.formData?.thirdField ? this.formData?.thirdField : '4';
+    const item4 = this.formData?.date;
     this.myObj = {name: this.ticketSlowgun + item1, desc: item2, other: item3,
      dueDate: item4, className: '', addDate: this.newDate,
      completeDate: '', remark: 'Add Comment', baseUrl: this.ticketLink};
@@ -88,11 +58,13 @@ export class AppService {
     }
     else {
       this.arrayItem = JSON.parse(localStorage.getItem('itemJson'));
-      if (item1 !== '' && item2 !== '' && item3 !== '') {
+      if (item1 !== '' && item1 !== undefined) {
+        this.formValid = false;
         this.arrayItem.unshift(this.myObj);
       }
       else{
-        console.log('please enter values')
+        console.log('please enter values');
+        this.formValid = true;
       }
       localStorage.setItem('itemJson', JSON.stringify(this.arrayItem));
     }
