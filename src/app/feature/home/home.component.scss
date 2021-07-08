@@ -121,6 +121,14 @@
   &-group{
     position: relative;
     margin-bottom: 24px;
+    label{
+      position: absolute;
+      top: 11px;
+      left: 13px;
+      font-size: 14px;
+      transition: .5s ease;
+      cursor: text;
+    }
     .select{
       display: block;
       width: 100%;
@@ -133,14 +141,12 @@
       background: rgba(0,0,0,0.3);
       color:#fff;
       text-shadow:0 1px 0 rgba(0,0,0,0.4);
-    }
-    label{
-      position: absolute;
-      top: 11px;
-      left: 13px;
-      font-size: 14px;
-      transition: .5s ease;
-      cursor: text;
+      &-label{
+        position: relative;
+        top: 0;
+        left: 0;
+        margin-bottom: 8px;
+      }
     }
     input{
       display: block;

@@ -9,6 +9,7 @@
           <h2 class="w-100">Add Task to List</h2>
           <form class="form-data" #myToDos="ngForm" (ngSubmit)="appService.checkAndSaveData()">
             <div class="form-group">
+              <label class="select-label" for="select">Select Your Project</label>
               <select class="select" name="select" id="select" (click)="appService.checkProject($event)">
                 <option  *ngFor="let item of appService.projects" [value]="item" (click)="appService.checkProject($event)">{{item}}</option>
               </select>
@@ -62,8 +63,8 @@
             <th scope="col">S.No</th>
             <th scope="col">Ticket Id</th>
             <th scope="col">Status</th>
-            <th scope="col">Remaining Hours</th>
-            <th scope="col">Remarks</th>
+            <th scope="col">Hours</th>
+            <th scope="col">Remark</th>
             <th scope="col">Date</th>
             <th scope="col">Mark Done</th>
             <th scope="col">Remove</th>
@@ -74,8 +75,8 @@
             <th scope="row">{{1+i}}</th>
             <td><a href="{{item.baseUrl+item.name}}" target="_blank">{{item.name}}</a></td>
             <td>{{item.desc}}</td>
-            <td class="text-center">{{item.other}}</td>
-            <td class="text-center" contenteditable="true" (mouseout)="appService.remarkUpdate(i, $event)">{{item.remark}}</td>
+            <td >{{item.other}}</td>
+            <td contenteditable="true" (mouseout)="appService.remarkUpdate(i, $event)">{{item.remark}}</td>
             <td>
               <span class="d-block" *ngIf="item.dueDate">Target {{item.dueDate}}</span> 
               <span class="d-block" *ngIf="item.addDate">Start {{item.addDate}}</span> 

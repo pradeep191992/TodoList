@@ -50,7 +50,7 @@ export class AppService {
     const item4 = this.formData?.date;
     this.myObj = {name: this.ticketSlowgun + item1, desc: item2, other: item3,
      dueDate: item4, className: '', addDate: this.newDate,
-     completeDate: '', remark: 'Add Comment', baseUrl: this.ticketLink};
+     completeDate: '', remark: 'add your comments', baseUrl: this.ticketLink};
 
     if (localStorage.getItem('itemJson') == null){
       this.arrayItem.push(this.myObj);
